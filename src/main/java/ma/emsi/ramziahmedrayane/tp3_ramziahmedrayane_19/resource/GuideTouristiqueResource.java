@@ -18,12 +18,15 @@ public class GuideTouristiqueResource {
      * Retourne les informations touristiques produites par le LLM.
      *
      * @param lieu nom de la ville ou du pays
+     * @param nombre nombre d'endroits à visiter
      * @return les informations touristiques au format JSON
      */
     @GET
-    @Path("lieu/{ville_ou_pays}")
+    @Path("lieu/{ville_ou_pays}/{nombre}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String endroitsDeVisite(@PathParam("ville_ou_pays") String lieu) {
-        return this.llmClient.envoyerRequete(lieu);
+    public String endroitsDeVisite(
+            @PathParam("ville_ou_pays") String lieu,
+            @PathParam("nombre") int nombre) {
+        return this.llmClient.envoyerRequete(lieu, nombre);
     }
 }

@@ -34,7 +34,9 @@ public class LlmClient implements Serializable {
 
 
 
-    public String envoyerRequete(String question) {
-        return this.assistant.chat(question);
+    public String envoyerRequete(String lieu, int nombre) {
+        return this.assistant.chat(
+                "Ville ou pays : " + lieu
+                        + "\nNombre d'endroits à visiter : " + nombre);
     }
 }
